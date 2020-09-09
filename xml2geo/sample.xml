@@ -1,0 +1,26 @@
+<Annotations MicronsPerPixel="0.5">
+	<Annotation Id="1" Name="" ReadOnly="0" NameReadOnly="0" LineColorReadOnly="0" Incremental="0" Type="4" LineColor="65280" Visible="1" Selected="1" MarkupImagePath="" MacroName="">
+		<Attributes/>
+		<Regions>
+			<RegionAttributeHeaders/>
+			<Region Id="1" Type="0" Zoom="0.03" Selected="0" ImageLocation="" ImageFocus="-1" Length="560.1" Area="879.5" LengthMicrons="28195.4" AreaMicrons="22268597.9" Text="" NegativeROA="0" InputRegionId="0" Analyze="1" DisplayId="1">
+				<Attributes/>
+				<Vertices>
+					<Vertex X="19089" Y="5632" Z="0"/>
+					<Vertex X="18619" Y="5851" Z="0"/>
+					<Vertex X="18588" Y="5851" Z="0"/>
+				</Vertices>
+			</Region>
+			<Region Id="2" Type="0" Zoom="0.1" Selected="0" ImageLocation="" ImageFocus="-1" Length="197.9" Area="160.5" LengthMicrons="1005.2" AreaMicrons="40681.4" Text="" NegativeROA="0" InputRegionId="0" Analyze="1" DisplayId="9">
+				<Attributes/>
+				<Vertices>
+					<Vertex X="5794" Y="2748" Z="0"/>
+					<Vertex X="5789" Y="2748" Z="0"/>
+					<Vertex X="5783" Y="2736" Z="0"/>
+					<Vertex X="5777" Y="2731" Z="0"/>
+				</Vertices>
+			</Region>
+		</Regions>
+		<Plots/>
+	</Annotation>
+</Annotations>
