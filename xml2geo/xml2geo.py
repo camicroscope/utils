@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
-
+import argparse
 import xml.etree.ElementTree as ET
+import json
 
+# arguments
+parser = argparse.ArgumentParser(description='xml to geojson annotation converter')
+parser.add_argument('input', nargs=1, help='Filepath for XML input')
+parser.add_argument('output', nargs='?', default=False, help='Filepath for json output')
+args = parser.parse_args()
+print(args)
 # read and parse xml annotation
-root = ET.parse('sample.xml').getroot()
+root = ET.parse(args.input[0]).getroot()
 
 # initialize output
 features = []
@@ -18,14 +25,15 @@ for region in root.findall('Annotation/Regions/Region'):
     max_y = 0
     coordinates = []
     for region in region.findall('Vertices/Vertex'):
-        value = region.get('X')
+        x = float(region.get("X"))
+        y = float(region.get("Y"))
         # keep track of min and max x and y for bound
-        min_x = min(min_x, float(region.get('X')))
-        min_y = min(min_y, float(region.get('Y')))
-        max_x = max(max_x, float(region.get('X')))
-        max_y = max(max_y, float(region.get('Y')))
+        min_x = min(min_x, x)
+        min_y = min(min_y, y)
+        max_x = max(max_x, x)
+        max_y = max(max_y, y)
         # add the current coordinate
-        coordinates.append([region.get('X'), region.get('Y')])
+        coordinates.append([x, y])
     # close polygon by re-adding first
     if len(coordinates):
         coordinates.append(coordinates[0])
@@ -46,4 +54,10 @@ for region in root.findall('Annotation/Regions/Region'):
 
 if not len(features):
     sys.exit("Unable to read any features")
-print(features)
+
+if (args.output):
+    # write file
+    with open(args.output, 'w') as json_file:
+        json.dump(features, json_file)
+else:
+    print(features)
